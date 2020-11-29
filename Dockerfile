@@ -13,5 +13,6 @@ RUN set -ex; \
     rm /cyberchef/build/prod/BundleAnalyzerReport.html /cyberchef/build/prod/CyberChef_$CYBERCHEF_VERSION.zip;
 
 FROM mwalbeck/true
-COPY --from=build /cyberchef/build/prod /cyberchef
+COPY --from=build /cyberchef/build/prod /var/www/cyberchef
+VOLUME /var/www/cyberchef
 CMD ["/true"]
