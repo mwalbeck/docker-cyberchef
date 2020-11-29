@@ -1,0 +1,73 @@
+---
+kind: pipeline
+type: docker
+name: cyberchef_build
+
+steps:
+  - name: determine tags
+    image: bash
+    environment:
+      APP: "CYBERCHEF"
+      DIR: ""
+      CUSTOM_TAGS: "latest,"
+    commands:
+      - apk add --no-cache grep
+      - VER=$(grep "ENV $${APP}_VERSION" $${DIR:-}Dockerfile)
+      - VER=$${VER##* }
+      - VER=$${VER#v}
+      - TAGS="$${CUSTOM_TAGS:-}"
+      - TAGS="$TAGS$VER,"
+      - VER=$${VER%.*}
+      - TAGS="$TAGS$VER"
+      - echo -n $TAGS > .tags
+      - echo $TAGS
+
+  - name: build and publish
+    image: plugins/docker
+    settings:
+      dockerfile: Dockerfile
+      username:
+        from_secret: dockerhub_username
+      password:
+        from_secret: dockerhub_password
+      repo: mwalbeck/cyberchef
+      tags:
+        - "latest"
+
+  - name: notify
+    image: plugins/matrix
+    settings:
+      homeserver: https://matrix.mwalbeck.org
+      roomid:
+        from_secret: matrix_roomid
+      username:
+        from_secret: matrix_username
+      password:
+        from_secret: matrix_password
+    when:
+      status:
+        - success
+        - failure
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: cyberchef_test
+
+steps:
+  - name: build test
+    image: plugins/docker
+    settings:
+      dockerfile: Dockerfile
+      repo: mwalbeck/cyberchef
+      dry_run: true
+
+trigger:
+  event:
+    - pull_request
