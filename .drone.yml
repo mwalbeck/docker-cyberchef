@@ -18,7 +18,7 @@ steps:
       - TAGS="$${CUSTOM_TAGS:-}"
       - TAGS="$TAGS$VER,"
       - VER=$${VER%.*}
-      - TAGS="$TAGS$VER"
+      - TAGS="$TAGS$VER,"
       - VER=$${VER%.*}
       - TAGS="$TAGS$VER"
       - echo -n $TAGS > .tags
