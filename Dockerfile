@@ -1,7 +1,7 @@
 FROM node:10.23.0-buster as build
 
 # renovate: datasource=github-tags depName=gchq/CyberChef versioning=semver
-ENV CYBERCHEF_VERSION v9.20.0
+ENV CYBERCHEF_VERSION v9.21.0
 
 RUN set -ex; \
     \
