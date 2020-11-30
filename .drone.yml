@@ -33,8 +33,6 @@ steps:
       password:
         from_secret: dockerhub_password
       repo: mwalbeck/cyberchef
-      tags:
-        - "latest"
 
   - name: notify
     image: plugins/matrix
