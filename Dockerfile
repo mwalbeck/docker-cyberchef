@@ -12,7 +12,13 @@ RUN set -ex; \
     grunt prod; \
     rm /cyberchef/build/prod/BundleAnalyzerReport.html /cyberchef/build/prod/CyberChef_$CYBERCHEF_VERSION.zip;
 
-FROM mwalbeck/true
-COPY --from=build /cyberchef/build/prod /var/www/cyberchef
+FROM busybox:1.32.0-uclibc
+COPY --from=build /cyberchef/build/prod /cyberchef
+COPY entrypoint.sh /entrypoint.sh
+RUN set -ex; \
+    \
+    chmod +x /entrypoint.sh;
+
 VOLUME /var/www/cyberchef
-CMD ["/true"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["true"]
