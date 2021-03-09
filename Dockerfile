@@ -12,7 +12,7 @@ RUN set -ex; \
     grunt prod; \
     rm /cyberchef/build/prod/BundleAnalyzerReport.html /cyberchef/build/prod/CyberChef_$CYBERCHEF_VERSION.zip;
 
-FROM busybox:1.33.0-uclibc@sha256:4f405c9ddb487625db3f1a1f11bb90b494a38fb2f8a2c12935919ddd6e2cebcc
+FROM busybox:1.33.0-uclibc@sha256:86987a35731add9a9d6ed8a51174e05b5769bd200460a12ee63e1ef476619bb9
 COPY --from=build /cyberchef/build/prod /cyberchef
 COPY entrypoint.sh /entrypoint.sh
 RUN set -ex; \
