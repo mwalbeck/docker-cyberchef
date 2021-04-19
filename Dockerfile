@@ -5,6 +5,8 @@ SHELL [ "/bin/bash", "-exc" ]
 # renovate: datasource=github-tags depName=gchq/CyberChef versioning=semver
 ENV CYBERCHEF_VERSION v9.28.0
 
+ENV NODE_OPTIONS --max_old_space_size=2048
+
 USER node
 
 RUN mkdir /tmp/cyberchef;
