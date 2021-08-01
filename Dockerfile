@@ -1,7 +1,7 @@
 FROM node:10.24.1-buster@sha256:05e259ab6478ae6032163ce34683bfccb495c8219f2f01a8d30889bb3ce33084 as build
 
 # renovate: datasource=github-tags depName=gchq/CyberChef versioning=semver
-ENV CYBERCHEF_VERSION v9.28.0
+ENV CYBERCHEF_VERSION v9.29.2
 
 ENV NODE_OPTIONS --max_old_space_size=2048
 
