@@ -31,10 +31,10 @@ steps:
     settings:
       dockerfile: Dockerfile
       repo: mwalbeck/cyberchef
-      password:
-        from_secret: dockerhub_password_ro
       username:
         from_secret: dockerhub_username
+      password:
+        from_secret: dockerhub_password_ro
       dry_run: true
 
 trigger:
@@ -64,10 +64,10 @@ steps:
     pull: if-not-exists
     settings:
       dockerfile: Dockerfile
-      password:
-        from_secret: dockerhub_password
       username:
         from_secret: dockerhub_username
+      password:
+        from_secret: dockerhub_password
       repo: mwalbeck/cyberchef
 
   - name: notify
@@ -97,6 +97,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: a518f98e0301b652d31080eb3afaa15626285166d0ef02f20af7198a8bd5013c
+hmac: 7b58b8c4d6f90b42e56906813d679ac902173f706339d8280ff28548bd76e934
 
 ...
