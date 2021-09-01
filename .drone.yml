@@ -31,6 +31,10 @@ steps:
     settings:
       dockerfile: Dockerfile
       repo: mwalbeck/cyberchef
+      password:
+        from_secret: dockerhub_password
+      username:
+        from_secret: dockerhub_username
       dry_run: true
 
 trigger:
@@ -93,6 +97,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 9498799b5832aa6e169c9045d102c16e36629c559b1db7b0b82a925e224bd550
+hmac: 3531650d2097a4b783d5188e2e6331f2a52ace8049bb1fb06b08224eb5fa63e0
 
 ...
