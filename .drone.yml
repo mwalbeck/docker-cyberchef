@@ -51,7 +51,7 @@ name: build and publish
 
 steps:
   - name: determine tags
-    image: mwalbeck/determine-docker-tags
+    image: mwalbeck/determine-docker-tags:latest-distroless
     pull: if-not-exists
     environment:
       VERSION_TYPE: docker_env
@@ -97,6 +97,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 7b58b8c4d6f90b42e56906813d679ac902173f706339d8280ff28548bd76e934
+hmac: 6234cea671b6e5cc7762d806f6b5b0f315b03aa30cc48e5e04dbc26be00699c8
 
 ...
