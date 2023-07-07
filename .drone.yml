@@ -70,22 +70,6 @@ steps:
         from_secret: dockerhub_password
       repo: mwalbeck/cyberchef
 
-  - name: notify
-    image: plugins/matrix
-    pull: if-not-exists
-    settings:
-      homeserver: https://matrix.mwalbeck.org
-      password:
-        from_secret: matrix_password
-      roomid:
-        from_secret: matrix_roomid
-      username:
-        from_secret: matrix_username
-    when:
-      status:
-        - failure
-        - success
-
 trigger:
   branch:
     - master
@@ -97,6 +81,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 7b58b8c4d6f90b42e56906813d679ac902173f706339d8280ff28548bd76e934
+hmac: d9e826063afa7dd64d4e3f0e86dc29b5cdf1a102152daa8f040d88e056777003
 
 ...
