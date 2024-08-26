@@ -16,6 +16,6 @@ RUN set -ex; \
     npx grunt prod; \
     rm /tmp/cyberchef/build/prod/BundleAnalyzerReport.html /tmp/cyberchef/build/prod/CyberChef_$CYBERCHEF_VERSION.zip;
 
-FROM nginxinc/nginx-unprivileged:1.26.2@sha256:339b59cb1e02816dddd047183336c44aaabbb4292a981e737d5dedd303222b2e
+FROM nginxinc/nginx-unprivileged:1.26.2@sha256:e30e228b2153ff44eec65b0a32ad01631a5a5f4f536b0c7670c28b9117c5b383
 COPY --from=build /tmp/cyberchef/build/prod /usr/share/nginx/html
 EXPOSE 8080
