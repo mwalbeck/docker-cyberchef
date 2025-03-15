@@ -15,6 +15,9 @@ jobs:
   test:
     runs-on: dind
     steps:
+      - name: sleep
+        shell: sh
+        run: sleep 300
       - uses: actions/checkout@v4
       - name: Get docker tags
         id: tags
