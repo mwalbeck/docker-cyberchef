@@ -1,4 +1,4 @@
-FROM node:20.19.2-bullseye@sha256:524ea23a8396972454a13e1eace9ad028c7e9f153c11b2f734d2bed7b8e604c2 as build
+FROM node:24.1.0-bullseye@sha256:b70ff20dd967181e5bf55aee6475bbb3560ac9d035b34b20ea5d3a1081007dc7 as build
 
 # renovate: datasource=github-tags depName=gchq/CyberChef versioning=semver
 ENV CYBERCHEF_VERSION v10.19.4
