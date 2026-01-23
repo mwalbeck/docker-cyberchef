@@ -1,7 +1,7 @@
-FROM node:20.19.6-bullseye@sha256:3ca3960b37879fd91a2863e757e79d2cb1bef159cbc4b44097ac3b2653e6d881 as build
+FROM node:20.20.0-trixie AS build
 
 # renovate: datasource=github-tags depName=gchq/CyberChef versioning=semver
-ENV CYBERCHEF_VERSION v10.19.4
+ENV CYBERCHEF_VERSION=v10.19.4
 
 USER node
 
@@ -16,6 +16,6 @@ RUN set -ex; \
     npx grunt prod; \
     rm /tmp/cyberchef/build/prod/BundleAnalyzerReport.html /tmp/cyberchef/build/prod/CyberChef_$CYBERCHEF_VERSION.zip;
 
-FROM nginxinc/nginx-unprivileged:1.26.3@sha256:cd83270b8e0019ee7687198a473842b45c1ef31126229d511afd96c8bba625bc
+FROM nginxinc/nginx-unprivileged:1.28.0
 COPY --from=build /tmp/cyberchef/build/prod /usr/share/nginx/html
 EXPOSE 8080
