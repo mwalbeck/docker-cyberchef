@@ -1,7 +1,7 @@
 FROM node:20.20.0-trixie AS build
 
 # renovate: datasource=github-tags depName=gchq/CyberChef versioning=semver
-ENV CYBERCHEF_VERSION=v10.19.4
+ENV CYBERCHEF_VERSION=v10.20.0
 
 USER node
 
