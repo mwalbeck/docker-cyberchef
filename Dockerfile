@@ -1,4 +1,4 @@
-FROM node:20.20.2-trixie@sha256:a69a521279bc48e5a262982f99b7cc8ae236e93c21c4521242a8126458cb9fa9 AS build
+FROM node:20.20.2-trixie@sha256:d689efd20e545476d3dfcf8f57643f0263c0bedcfa5825d58c872314863d44a2 AS build
 
 # renovate: datasource=github-tags depName=gchq/CyberChef versioning=semver
 ENV CYBERCHEF_VERSION=v10.22.1
